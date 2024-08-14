@@ -1,0 +1,9 @@
+.options div {
+  transition: all 0.5s;
+  cursor: pointer;
+}
+.options div:hover {
+  background: linear-gradient(to top, rgb(25, 25, 86, 20), rgb(53, 156, 215));
+  color: #fff;
+  transform: translateY(-2px);
+}

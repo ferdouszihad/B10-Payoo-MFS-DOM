@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Payo || Home</title>
+    <link href="./css/daisy.min.css" rel="stylesheet" type="text/css" />
+    <script src="./scripts/tailwind.min.js"></script>
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body
+    class="max-w-md min-h-screen mx-auto bg-gradient-to-tl from-blue-50 to-pink-50"
+  >
+    <header class="sticky top-0">
+      <nav class="flex justify-between items-center gap-1 px-2 bg-black">
+        <div class="logo flex gap-1 py-2">
+          <div class="max-w-12">
+            <img src="./assets/logo.png" alt="" />
+          </div>
+          <div class="text-blue-100 px-2">
+            <h2 class="text-xl">$ <span id="balance">45000</span></h2>
+            <span class="badge badge-sm">available Balance</span>
+          </div>
+        </div>
+        <a href="/index.html">
+          <button class="btn btn-xs drop-shadow shadow-white">Log-Out</button>
+        </a>
+      </nav>
+      <marquee behavior="" direction="" class="bg-black text-white p-1"
+        ><i class="fa-solid fa-bullhorn"></i> Welcome to PAYOOO! Enjoy easy and
+        convenient financial services with us. Cashout charge is low and
+        affordable, sending money is free, and cashing in is quick and simple.
+        Thank you for choosing MFS CashMe!</marquee
+      >
+    </header>
+
+    <main class="px-2">
+      <div
+        class="options border-b-2 border-stone-300 pb-2 *:text-sm grid grid-cols-3 gap-3 *:border-4 *:p-3 *:rounded-full *:text-center *:border-double"
+      >
+        <div id="addmoney-btn">
+          <p>Add money</p>
+        </div>
+        <div id="cashout-btn">
+          <p>Cashout</p>
+        </div>
+        <div id="transfer-btn">
+          <p>Transfer Money</p>
+        </div>
+        <div id="get-bonus-btn">
+          <p>Get Bonus</p>
+        </div>
+        <div id="paybill-btn">
+          <p>Pay Bill</p>
+        </div>
+        <div id="transaction-btn">
+          <p>Transactions</p>
+        </div>
+      </div>
+
+      <div class="offers"></div>
+
+      <section id="transaction-container" class="py-5 space-y-3 hidden">
+        <h2 class="text-2xl text-center text-blue-700">Transaction History</h2>
+
+        <div id="transaction" class="w-11/12 mx-auto">
+          <p class="text-center">All Your Transaction is Here</p>
+        </div>
+      </section>
+      <section id="get-bonus" class="py-5 text-center hidden">
+        <h2 class="text-2xl text-center text-blue-700">Get Bonus</h2>
+        <div class="max-w-sm mx-auto space-y-5">
+          <div class="form-control">
+            <label class="label">
+              <span class="label-text">ENTER BONUS CUOPON</span>
+            </label>
+
+            <input
+              id="get-bonus-cupon"
+              type="text"
+              placeholder="Enter Coupon NEW24"
+              class="input input-bordered"
+              required
+            />
+          </div>
+          <button id="get-bonus-submit-btn" class="btn btn-primary">
+            Get Bonus
+          </button>
+        </div>
+      </section>
+
+      <section id="transfer" class="py-5 hidden">
+        <h2 class="text-2xl text-center text-blue-700">Transfer Money</h2>
+        <div class="max-w-sm mx-auto space-y-5">
+          <div class="form-control">
+            <label class="label">
+              <span class="label-text">User Account Number</span>
+            </label>
+            <input
+              type="text"
+              placeholder="11 Digit Number"
+              class="input input-bordered"
+              required
+              id="transfer-acc"
+            />
+          </div>
+          <div class="form-control">
+            <label class="label">
+              <span class="label-text">Amount</span>
+            </label>
+            <input
+              id="transfer-amount"
+              type="text"
+              placeholder="Amount to Transfer"
+              class="input input-bordered"
+              required
+            />
+          </div>
+          <div class="flex justify-between">
+            <input
+              id="transfer-pin"
+              type="text"
+              placeholder="4 Digit PIN"
+              class="input input-sm input-bordered"
+              required
+            />
+            <button id="transfer-submit-btn" class="btn btn-sm btn-primary">
+              Send Now
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section id="cashout" class="py-5 hidden">
+        <h2 class="text-2xl text-center text-blue-700">Cash-Out</h2>
+        <div class="max-w-sm mx-auto space-y-3">
+          <div class="form-control">
+            <label class="label">
+              <span class="label-text">Agent Number</span>
+            </label>
+            <input
+              id="cashout-acc"
+              type="text"
+              placeholder="11 Digit Number"
+              class="input input-bordered"
+              required
+            />
+          </div>
+          <div class="form-control">
+            <label class="label">
+              <span class="label-text">Amount</span>
+            </label>
+            <input
+              id="cashout-amount"
+              type="text"
+              placeholder="Amount to Withdraw"
+              class="input input-bordered"
+              required
+            />
+          </div>
+          <div class="flex justify-between">
+            <input
+              id="cashout-pin"
+              type="text"
+              placeholder="4 Digit PIN"
+              class="input input-sm input-bordered"
+              required
+            />
+            <button id="cashout-submit-btn" class="btn btn-sm btn-primary">
+              WithDraw
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section id="paybill" class="py-5 hidden">
+        <h2 class="text-2xl text-center text-blue-700">Pay Bill</h2>
+        <div class="max-w-sm mx-auto space-y-3">
+          <div class="form-control">
+            <label class="label">
+              <span class="label-text">Select To Pay</span>
+            </label>
+            <select id="paybill-option" class="select select-bordered">
+              <option disabled selected>Select</option>
+              <option value="Gas">Gas</option>
+              <option value="Wifi">Wifi</option>
+              <option value="Water">Water</option>
+              <option value="Current">Current</option>
+              <option value="Rent">Rent</option>
+            </select>
+          </div>
+          <div class="form-control">
+            <label class="label">
+              <span class="label-text">Biller Account Number</span>
+            </label>
+
+            <input
+              id="paybill-acc"
+              type="text"
+              placeholder="Enter Account Number"
+              class="input input-bordered"
+              required
+            />
+          </div>
+          <div class="form-control">
+            <label class="label">
+              <span class="label-text">Amount to Pay</span>
+            </label>
+
+            <input
+              id="paybill-amount"
+              type="text"
+              placeholder="Amount to Withdraw"
+              class="input input-bordered"
+              required
+            />
+          </div>
+
+          <div class="flex justify-between">
+            <input
+              id="paybill-pin"
+              type="text"
+              placeholder="4 Digit PIN"
+              class="input input-sm input-bordered"
+              required
+            />
+            <button id="paybill-submit-btn" class="btn btn-sm btn-primary">
+              Pay Now
+            </button>
+          </div>
+        </div>
+      </section>
+      <section id="addmoney" class="py-5">
+        <h2 class="text-2xl text-center text-blue-700">Add Money</h2>
+        <div class="max-w-sm mx-auto space-y-3">
+          <div class="form-control">
+            <label class="label">
+              <span class="label-text">Select A Bank</span>
+            </label>
+            <select id="addmoney-bank" class="select select-bordered">
+              <option disabled selected>Select</option>
+              <option value="Bkash">Bkash</option>
+              <option value="Rocket">Rocket</option>
+              <option value="Nagad">Nagad</option>
+              <option value="Upay">Upay</option>
+              <option value="Cellphin">Cellphin</option>
+              <option value="Sure-Cash">Sure-Cash</option>
+              <option value="Sonali-Sheba">Sonali Sheba</option>
+            </select>
+          </div>
+          <div class="form-control">
+            <label class="label">
+              <span class="label-text">Bank Account Number</span>
+            </label>
+
+            <input
+              id="addmoney-acc"
+              type="text"
+              placeholder="Enter 11 digit Account Number"
+              class="input input-bordered"
+              required
+            />
+          </div>
+          <div class="form-control">
+            <label class="label">
+              <span class="label-text">Amount to Add</span>
+            </label>
+
+            <input
+              id="addmoney-amount"
+              type="text"
+              placeholder="Amount to Withdraw"
+              class="input input-bordered"
+              required
+            />
+          </div>
+
+          <div class="flex justify-between">
+            <input
+              id="addmoney-pin"
+              type="text"
+              placeholder="4 Digit PIN"
+              class="input input-sm input-bordered"
+              required
+            />
+            <button id="addmoney-submit-btn" class="btn btn-sm btn-primary">
+              Add money
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- <main class="md:w-9/12 bg-slate-100 min-h-screen mx-auto grid grid-cols-12">
+      <section class="col-span-8 border-r-2">
+        <section id="services">
+          <h2 class="text-xl text-center bg-slate-300 font-bold">Services</h2>
+          <div
+            class="grid grid-cols-3 *:border *:flex *:flex-col *:justify-center *:p-5 *:cursor-pointer"
+          >
+            <div id="cashout-btn">
+              Cashout
+              <span class="flex text-xs bg-black text-white p-px"
+                >1.5% charge</span
+              >
+            </div>
+            <div id="get-bonus-btn">
+              Get-Bonus
+              <span class="flex text-xs bg-black text-white p-px"
+                >Only Once (2000 Taka)</span
+              >
+            </div>
+            <div id="transfer-btn">
+              Transfer
+              <span class="flex text-xs bg-black text-white p-px">Free</span>
+            </div>
+            <div>
+              Pay-Bill
+              <span class="flex text-xs bg-black text-white p-px"
+                >1% Charge</span
+              >
+            </div>
+            <div id="addmoney-btn">
+              Add-Money
+              <span class="flex text-xs bg-black text-white p-px">Free</span>
+            </div>
+            <div>
+              Top-Up
+              <span class="flex text-xs bg-black text-white p-px">Free</span>
+            </div>
+          </div>
+        </section>
+
+        <section id="cashout" class="py-10 hidden">
+          <h2 class="text-2xl text-center font-bold">Cash-Out</h2>
+          <div class="max-w-sm mx-auto space-y-5">
+            <div class="form-control">
+              <label class="label">
+                <span class="label-text">Agent Number</span>
+              </label>
+              <input
+                id="cashout-acc"
+                type="text"
+                placeholder="12 Digit Number"
+                class="input input-sm input-bordered"
+                required
+              />
+            </div>
+            <div class="form-control">
+              <label class="label">
+                <span class="label-text">Amount</span>
+              </label>
+              <input
+                id="cashout-amount"
+                type="text"
+                placeholder="Amount to Withdraw"
+                class="input input-sm input-bordered"
+                required
+              />
+            </div>
+            <div class="flex justify-between">
+              <input
+                id="cashout-pin"
+                type="text"
+                placeholder="4 Digit PIN"
+                class="input input-sm input-bordered"
+                required
+              />
+              <button id="cashout-submit-btn" class="btn btn-sm btn-primary">
+                WithDraw
+              </button>
+            </div>
+          </div>
+        </section>
+        <section id="transfer" class="py-10 hidden">
+          <h2 class="text-2xl text-center font-bold">Transfer Money</h2>
+          <div class="max-w-sm mx-auto space-y-5">
+            <div class="form-control">
+              <label class="label">
+                <span class="label-text">User Account Number</span>
+              </label>
+              <input
+                type="text"
+                placeholder="12 Digit Number"
+                class="input input-sm input-bordered"
+                required
+                id="transfer-acc"
+              />
+            </div>
+            <div class="form-control">
+              <label class="label">
+                <span class="label-text">Amount</span>
+              </label>
+              <input
+                id="transfer-amount"
+                type="text"
+                placeholder="Amount to Transfer"
+                class="input input-sm input-bordered"
+                required
+              />
+            </div>
+            <div class="flex justify-between">
+              <input
+                id="transfer-pin"
+                type="text"
+                placeholder="4 Digit PIN"
+                class="input input-sm input-bordered"
+                required
+              />
+              <button id="transfer-submit-btn" class="btn btn-sm btn-primary">
+                Send Now
+              </button>
+            </div>
+          </div>
+        </section>
+        <section id="get-bonus" class="py-10 hidden">
+          <h2 class="text-2xl text-center font-bold">Get Bonus</h2>
+          <div class="max-w-sm mx-auto space-y-5">
+            <div class="form-control">
+              <label class="label">
+                <span class="label-text">ENTER BONUS CUOPON</span>
+              </label>
+
+              <input
+                id="get-bonus-cupon"
+                type="text"
+                placeholder="Enter Coupon NEW24"
+                class="input input-sm input-bordered"
+                required
+              />
+            </div>
+            <div class="form-control">
+              <label class="label">
+                <span class="label-text">Press Enter to Validate Coupon</span>
+              </label>
+            </div>
+          </div>
+        </section>
+
+        <section id="addmoney" class="py-10 hidden">
+          <h2 class="text-2xl text-center font-bold">Add Money</h2>
+          <div class="max-w-sm mx-auto space-y-5">
+            <div class="form-control">
+              <label class="label">
+                <span class="label-text">Select A Bank</span>
+              </label>
+              <select
+                id="addmoney-bank"
+                class="select select-bordered w-full max-w-xs"
+              >
+                <option disabled selected>Select</option>
+                <option value="Bkash">Bkash</option>
+                <option value="Rocket">Rocket</option>
+                <option value="Nagad">Nagad</option>
+                <option value="Upay">Upay</option>
+                <option value="Cellphin">Cellphin</option>
+                <option value="Sure-Cash">Sure-Cash</option>
+                <option value="Sonali-Sheba">Sonali Sheba</option>
+              </select>
+            </div>
+            <div class="form-control">
+              <label class="label">
+                <span class="label-text">Bank Account Number</span>
+              </label>
+
+              <input
+                id="addmoney-acc"
+                type="text"
+                placeholder="Amount to Withdraw"
+                class="input input-sm input-bordered"
+                required
+              />
+            </div>
+            <div class="form-control">
+              <label class="label">
+                <span class="label-text">Amount to Add</span>
+              </label>
+
+              <input
+                id="addmoney-amount"
+                type="text"
+                placeholder="Amount to Withdraw"
+                class="input input-sm input-bordered"
+                required
+              />
+            </div>
+
+            <div class="flex justify-between">
+              <input
+                id="addmoney-pin"
+                type="text"
+                placeholder="4 Digit PIN"
+                class="input input-sm input-bordered"
+                required
+              />
+              <button id="addmoney-submit-btn" class="btn btn-sm btn-primary">
+                Add money
+              </button>
+            </div>
+          </div>
+        </section>
+      </section>
+      <section class="col-span-4">
+        <h2 class="text-xl text-center bg-slate-300 font-bold">
+          Transaction History
+        </h2>
+        <div id="transaction" class="flex flex-col gap-5"></div>
+      </section>
+    </main> -->
+    <!-- Open the modal using ID.showModal() method -->
+
+    <dialog id="my_modal_2" class="modal">
+      <div class="modal-box">
+        <h3 class="text-lg font-bold">Hey Jhankar!</h3>
+        <p class="py-4">Are you Leaving?? Have Not Collected your Bonus Yet</p>
+        <button class="btn">CUPON : NEW24</button>
+      </div>
+      <form method="dialog" class="modal-backdrop">
+        <button>close</button>
+      </form>
+    </dialog>
+
+    <script src="./scripts/script.js"></script>
+  </body>
+</html>
